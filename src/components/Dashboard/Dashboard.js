@@ -157,7 +157,7 @@ const Dashboard = () => {
     form
       .validateFields()
       .then((values) => {
-        const timeFormated = values?.times
+        const timeFormated = values.times
           ? values.times.map((val) => {
               return val.format("MMMM Do YYYY, h:mm:ss a");
             })
@@ -165,7 +165,10 @@ const Dashboard = () => {
 
         const booking = {
           ...values,
-          times: timeFormated,
+          times: [
+            values.default_time.format("MMMM Do YYYY, h:mm:ss a"),
+            ...timeFormated,
+          ],
           user: currentUser.id,
         };
         dispatch(addBooking(booking));
@@ -257,6 +260,17 @@ const Dashboard = () => {
           <Form.Item name="location" rules={[{ required: true }]}>
             <Input.TextArea placeholder="Location" />
           </Form.Item>
+          <Form.Item rules={[{ required: true }]} name="default_time">
+            <DatePicker
+              name="newtime"
+              showTime
+              onChange={onChange}
+              onOk={onOk}
+              placeholder="Proposed time"
+              style={{ width: "100%" }}
+            />
+          </Form.Item>
+
           <Form.List name="times">
             {(fields, { add, remove }) => {
               return (
@@ -271,7 +285,7 @@ const Dashboard = () => {
                       >
                         <DatePicker
                           style={
-                            fields.length > 1
+                            fields.length >= 1
                               ? { width: "calc(100% - 30px)" }
                               : { width: "100%" }
                           }
@@ -283,7 +297,7 @@ const Dashboard = () => {
                         />
                       </Form.Item>
 
-                      {fields.length > 1 ? (
+                      {fields.length >= 1 ? (
                         <MinusCircleOutlined
                           className="dynamic-delete-button"
                           style={{
