@@ -3,10 +3,6 @@ import {
   CLEAR_ERROR,
   POSTING_SIGNUP,
   SET_CURRENT_USER,
-  GET_TYPES,
-  GETTING_TYPES,
-  GETTING_BOOKINGS,
-  ADDING_BOOKING,
 } from "../saga/types";
 
 export const clearError = () => {

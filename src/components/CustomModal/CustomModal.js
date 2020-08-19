@@ -1,25 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {
-  Table,
-  Tag,
-  Space,
-  Button,
-  Modal,
-  Input,
-  Select,
-  DatePicker,
-  Form,
-} from "antd";
+import { Button, Modal, Input, Form } from "antd";
 import { useForm } from "antd/lib/form/Form";
 import { useDispatch } from "react-redux";
-import {
-  changeTime,
-  rejectStatus,
-  changeStatus,
-} from "../../actions/bookingAction";
-import { ExclamationCircleOutlined } from "@ant-design/icons";
-
-const { confirm } = Modal;
+import { changeStatus } from "../../actions/bookingAction";
 
 const ApproveModal = ({ data }) => {
   const [visible, setVisible] = useState(true);

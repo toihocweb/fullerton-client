@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Table,
   Tag,
@@ -36,7 +36,6 @@ const Dashboard = () => {
   const isLoading = useSelector((state) => state.bookingReducer.isLoading);
   const currentUser = useSelector((state) => state.authReducer.currentUser);
   const isAdmin = useSelector((state) => state.authReducer.isAdmin);
-  const cancelRef = useRef(null);
   const { confirm } = Modal;
   const columns = [
     {

@@ -6,7 +6,6 @@ import {
   GETTING_BOOKINGS,
   ADDING_BOOKING,
   CHANGING_STATUS,
-  REJECT_STATUS,
   CANCEL_BOOKING,
 } from "./types";
 import { authSaga } from "./authSaga";
